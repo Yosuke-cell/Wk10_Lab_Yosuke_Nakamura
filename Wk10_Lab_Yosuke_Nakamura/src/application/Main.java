@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -29,7 +31,11 @@ public class Main extends Application {
 		grid.setVgap(10);
 		grid.setAlignment(Pos.CENTER);
 		
-		
+		//logo
+		Image logoImage = new Image(getClass().getResourceAsStream("image_portfolio.png"));
+		ImageView logoView = new ImageView(logoImage);
+		logoView.setFitHeight(40);
+		logoView.setPreserveRatio(true);;
 		Label title = new Label("Employment Application");
 		title.setStyle(
 			    "-fx-background-color: black;" +
@@ -37,6 +43,9 @@ public class Main extends Application {
 			    "-fx-font-size: 24px;" +
 			    "-fx-font-weight: bold;"
 			);
+		
+		HBox titleBox = new HBox(10, logoView, title);
+		titleBox.setAlignment(Pos.CENTER_LEFT);
 		
 		Label headerperson = new Label("Perosnal Information");
 		headerperson.setStyle(
@@ -87,7 +96,9 @@ public class Main extends Application {
 		//layout
 		int row = 0;
 		
-		grid.add(title, 0, row++);
+		//titleBox
+		grid.add(titleBox, 0, row++, 2, 1);
+		
 		//personal info
 		grid.add(headerperson, 0, row++);
 		
